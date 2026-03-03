@@ -1,0 +1,8 @@
+{
+  "name": "@rupertsworld/dependencies",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Simple dependency container for singleton services",
+  "exports": "./src/index.ts",
+  "files": ["src"]
+}
