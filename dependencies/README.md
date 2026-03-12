@@ -25,6 +25,18 @@ It also helps with circular service wiring. `resolve(...)` returns a stable lazy
 
 For design rationale and architectural notes, see `docs/architecture.md`.
 
+## Runnable example
+
+A tiny Vite app lives in `example/` and demonstrates the real entry-point pattern this package is meant for.
+
+Run it with:
+
+```bash
+cd dependencies/example
+npm install
+npm run dev
+```
+
 ## Usage
 
 ### `register(Class)`
