@@ -2,7 +2,7 @@
   "name": "@rupertsworld/dependencies",
   "version": "0.1.1",
   "type": "module",
-  "description": "Simple dependency container for singleton services",
+  "description": "Lazy singleton dependency container with typed identifiers and injectable classes",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
@@ -16,9 +16,14 @@
   ],
   "scripts": {
     "build": "tsc",
-    "dev": "tsc --watch"
+    "dev": "tsc --watch",
+    "test": "node --import tsx --test tests/*.test.ts",
+    "test:types": "tsc --noEmit --project tsconfig.types.json",
+    "test:all": "npm run test && npm run test:types"
   },
   "devDependencies": {
+    "@types/node": "^25.4.0",
+    "tsx": "^4.21.0",
     "typescript": "^5.7.0"
   }
 }
