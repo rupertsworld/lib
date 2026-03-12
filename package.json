@@ -1,8 +1,0 @@
-{
-  "name": "@rupertsworld/lib",
-  "private": true,
-  "type": "module",
-  "workspaces": [
-    "packages/*"
-  ]
-}

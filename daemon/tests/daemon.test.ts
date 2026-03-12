@@ -4,7 +4,7 @@ import { existsSync } from "node:fs";
 import { mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { Daemon } from "../src/index.ts";
+import { Daemon, UnsupportedPlatformError } from "../src/index.ts";
 
 type ExecCall = { command: string; args: string[] };
 
@@ -304,22 +304,22 @@ test("status: linux reports installed but not running for inactive service", asy
   }
 });
 
-test("install: unsupported platform throws", async () => {
+test("install: unsupported platform throws UnsupportedPlatformError", async () => {
   const { daemon } = makeDaemon({ platform: "win32" });
 
-  await assert.rejects(daemon.install(), /not supported on this platform/);
+  await assert.rejects(daemon.install(), (err) => err instanceof UnsupportedPlatformError);
 });
 
-test("uninstall: unsupported platform throws", async () => {
+test("uninstall: unsupported platform throws UnsupportedPlatformError", async () => {
   const { daemon } = makeDaemon({ platform: "win32" });
 
-  await assert.rejects(daemon.uninstall(), /not supported on this platform/);
+  await assert.rejects(daemon.uninstall(), (err) => err instanceof UnsupportedPlatformError);
 });
 
-test("status: unsupported platform throws", async () => {
+test("status: unsupported platform throws UnsupportedPlatformError", async () => {
   const { daemon } = makeDaemon({ platform: "win32" });
 
-  await assert.rejects(daemon.status(), /not supported on this platform/);
+  await assert.rejects(daemon.status(), (err) => err instanceof UnsupportedPlatformError);
 });
 
 test("install: macOS includes env vars in plist when provided", async () => {

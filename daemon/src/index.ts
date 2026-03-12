@@ -96,8 +96,11 @@ async function defaultExec(command: string, args: string[]): Promise<ExecResult>
   return { stdout: result.stdout, stderr: result.stderr };
 }
 
-function unsupported(): never {
-  throw new Error("not supported on this platform");
+export class UnsupportedPlatformError extends Error {
+  constructor() {
+    super("not supported on this platform");
+    this.name = "UnsupportedPlatformError";
+  }
 }
 
 export class Daemon {
@@ -145,7 +148,7 @@ export class Daemon {
       return;
     }
 
-    unsupported();
+    throw new UnsupportedPlatformError();
   }
 
   async uninstall(): Promise<void> {
@@ -168,7 +171,7 @@ export class Daemon {
       return;
     }
 
-    unsupported();
+    throw new UnsupportedPlatformError();
   }
 
   async status(): Promise<DaemonStatus> {
@@ -199,6 +202,6 @@ export class Daemon {
       }
     }
 
-    unsupported();
+    throw new UnsupportedPlatformError();
   }
 }

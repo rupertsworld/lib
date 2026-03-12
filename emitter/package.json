@@ -1,0 +1,28 @@
+{
+  "name": "@rupertsworld/emitter",
+  "version": "0.1.1",
+  "type": "module",
+  "description": "Typed event emitter with disposable subscriptions",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "dependencies": {
+    "@rupertsworld/disposable": "^0.1.0",
+    "mitt": "^3.0.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.0"
+  }
+}

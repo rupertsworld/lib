@@ -17,7 +17,9 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
-    "test": "node --import tsx --test tests/*.test.ts"
+    "test": "node --import tsx --test tests/daemon.test.ts",
+    "test:e2e": "node --import tsx --test tests/e2e.test.ts",
+    "test:all": "node --import tsx --test tests/*.test.ts"
   },
   "devDependencies": {
     "@types/node": "^25.4.0",
